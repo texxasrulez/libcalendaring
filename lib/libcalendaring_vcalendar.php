@@ -489,7 +489,9 @@ class libcalendaring_vcalendar implements Iterator
 
                 case 'EXDATE':
                     if (!empty($value)) {
-                        $exdates = array_map(function ($_) { return is_array($_) ? $_[0] : $_; }, self::convert_datetime($prop, true));
+                        $exdates = array_map(function ($_) {
+                            return is_array($_) ? $_[0] : $_;
+                        }, self::convert_datetime($prop, true));
                         if (!empty($event['recurrence']['EXDATE'])) {
                             $event['recurrence']['EXDATE'] = array_merge($event['recurrence']['EXDATE'], $exdates);
                         } else {
@@ -500,7 +502,9 @@ class libcalendaring_vcalendar implements Iterator
 
                 case 'RDATE':
                     if (!empty($value)) {
-                        $rdates = array_map(function ($_) { return is_array($_) ? $_[0] : $_; }, self::convert_datetime($prop, true));
+                        $rdates = array_map(function ($_) {
+                            return is_array($_) ? $_[0] : $_;
+                        }, self::convert_datetime($prop, true));
                         if (!empty($event['recurrence']['RDATE'])) {
                             $event['recurrence']['RDATE'] = array_merge($event['recurrence']['RDATE'], $rdates);
                         } else {
