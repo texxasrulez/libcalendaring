@@ -31,6 +31,8 @@
 
 class libcalendaring extends rcube_plugin
 {
+    public $version = '3.6.1';
+
     public $rc;
     public $timezone;
     public $gmt_offset;

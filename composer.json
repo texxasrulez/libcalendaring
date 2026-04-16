@@ -1,10 +1,13 @@
 {
     "name": "texxasrulez/libcalendaring",
     "type": "roundcube-plugin",
-    "description": "Library providing common functions for calendaring plugins",
+    "description": "Display additional information for the current user and much more.",
     "homepage": "https://github.com/texxasrulez/libcalendaring",
-    "license": "AGPLv3",
-    "version": "3.6.1",
+	"support": {
+		"issues": "https://github.com/texxasrulez/libcalendaring/issues",
+		"source": "https://github.com/texxasrulez/libcalendaring"
+  },
+  "license": "GPL-3.0",
     "authors": [
         {
             "name": "Thomas Bruederli",
@@ -17,9 +20,15 @@
             "role": "Developer"
         }
     ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://plugins.roundcube.net"
+        }
+    ],
     "require": {
-        "php": ">=7.2.0",
-        "roundcube/plugin-installer": ">=0.1.3",
+        "php": ">=7.1.0",
+        "roundcube/plugin-installer": ">=0.1.4",
         "sabre/vobject": "~4.5.1"
     }
 }

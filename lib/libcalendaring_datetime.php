@@ -26,6 +26,7 @@
 class libcalendaring_datetime extends DateTime
 {
     public $_dateonly = false;
+    public $_has_year = true;
 
     /**
      * Create an instance from a date string or object
@@ -49,6 +50,34 @@ class libcalendaring_datetime extends DateTime
         );
 
         $result->_dateonly = $dateonly;
+
+        return $result;
+    }
+
+    /**
+     * Create an instance from a birthday value that might be a partial vCard date.
+     *
+     * Supports RFC 6350 partial dates such as --MMDD and --MM-DD by normalizing
+     * them to a leap-safe placeholder year while preserving the information that
+     * the original value had no year.
+     *
+     * @param DateTimeInterface|string $date Birthday date
+     */
+    public static function createFromBirthday($date)
+    {
+        $has_year = true;
+
+        if (!$date instanceof DateTimeInterface) {
+            $date = trim((string) $date);
+
+            if (preg_match('/^--(\d{2})-?(\d{2})$/', $date, $matches)) {
+                $date = sprintf('2000-%s-%s', $matches[1], $matches[2]);
+                $has_year = false;
+            }
+        }
+
+        $result = self::createFromAny($date, true);
+        $result->_has_year = $has_year;
 
         return $result;
     }
