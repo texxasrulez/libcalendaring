@@ -31,7 +31,16 @@
 
 class libcalendaring extends rcube_plugin
 {
-    public $version = '3.6.1';
+    const PLUGIN_VERSION = '3.6.1';
+    const PLUGIN_INFO = array(
+        'name' => 'libcalendaring',
+        'vendor' => 'Gene Hawkins',
+        'version' => self::PLUGIN_VERSION,
+        'license' => 'GPL-3.0',
+        'uri' => 'https://github.com/texxasrulez/libcalendaring',
+    );
+    
+    public $version = self::PLUGIN_VERSION;
 
     public $rc;
     public $timezone;
